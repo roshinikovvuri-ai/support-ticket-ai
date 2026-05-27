@@ -21,7 +21,7 @@ def train_model():
     df = df.dropna()
 
     # Features and labels
-    X = df["Ticket Description"].tolist()
+    X = df["clean_text"].tolist()
     y = df["Ticket Type"].tolist()
 
     # Convert text into BERT embeddings
