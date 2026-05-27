@@ -1,22 +1,23 @@
 import streamlit as st
 from model import train_model, predict_category
 
+# Train model
 train_model()
 
-st.title("AI Customer Support Ticket Classifier")
+# Title
+st.title("AI Customer Support Ticket Classifier (BERT Powered)")
 
-user_input = st.text_area("Enter support ticket")
+# Input
+user_input = st.text_area("Enter customer support ticket")
 
-if st.button("Analyze"):
-    category = predict_category(user_input)
-    st.success(f"Predicted Category: {category}")
+# Button
+if st.button("Analyze Ticket"):
 
+    if user_input.strip() == "":
+        st.warning("Please enter ticket text.")
 
-from utils import get_priority
+    else:
 
-if st.button("Analyze"):
-    category = predict_category(user_input)
-    priority = get_priority(user_input)
+        category = predict_category(user_input)
 
-    st.success(f"Category: {category}")
-    st.warning(f"Priority: {priority}")
+        st.success(f"Predicted Category: {category}")
